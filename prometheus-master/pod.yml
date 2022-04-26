@@ -1,0 +1,265 @@
+# Please edit the object below. Lines beginning with a '#' will be ignored,
+# and an empty file will abort the edit. If an error occurs while saving this file will be
+# reopened with the relevant failures.
+#
+apiVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: "2021-09-28T10:51:54Z"
+  generateName: kube-state-metrics-77895f7f8b-
+  labels:
+    app.kubernetes.io/instance: kube-state-metrics
+    app.kubernetes.io/name: kube-state-metrics
+    pod-template-hash: 77895f7f8b
+  managedFields:
+  - apiVersion: v1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:generateName: {}
+        f:labels:
+          .: {}
+          f:app.kubernetes.io/instance: {}
+          f:app.kubernetes.io/name: {}
+          f:pod-template-hash: {}
+        f:ownerReferences:
+          .: {}
+          k:{"uid":"0d7a966e-c29c-4ece-9170-2ac16c12af18"}:
+            .: {}
+            f:apiVersion: {}
+            f:blockOwnerDeletion: {}
+            f:controller: {}
+            f:kind: {}
+            f:name: {}
+            f:uid: {}
+      f:spec:
+        f:containers:
+          k:{"name":"kube-state-metrics"}:
+            .: {}
+            f:args: {}
+            f:image: {}
+            f:imagePullPolicy: {}
+            f:livenessProbe:
+              .: {}
+              f:failureThreshold: {}
+              f:httpGet:
+                .: {}
+                f:path: {}
+                f:port: {}
+                f:scheme: {}
+              f:initialDelaySeconds: {}
+              f:periodSeconds: {}
+              f:successThreshold: {}
+              f:timeoutSeconds: {}
+            f:name: {}
+            f:ports:
+              .: {}
+              k:{"containerPort":8080,"protocol":"TCP"}:
+                .: {}
+                f:containerPort: {}
+                f:protocol: {}
+            f:readinessProbe:
+              .: {}
+              f:failureThreshold: {}
+              f:httpGet:
+                .: {}
+                f:path: {}
+                f:port: {}
+                f:scheme: {}
+              f:initialDelaySeconds: {}
+              f:periodSeconds: {}
+              f:successThreshold: {}
+              f:timeoutSeconds: {}
+            f:resources: {}
+            f:terminationMessagePath: {}
+            f:terminationMessagePolicy: {}
+        f:dnsPolicy: {}
+        f:enableServiceLinks: {}
+        f:restartPolicy: {}
+        f:schedulerName: {}
+        f:securityContext:
+          .: {}
+          f:fsGroup: {}
+          f:runAsGroup: {}
+          f:runAsUser: {}
+        f:serviceAccount: {}
+        f:serviceAccountName: {}
+        f:terminationGracePeriodSeconds: {}
+    manager: kube-controller-manager
+    operation: Update
+    time: "2021-09-28T10:51:54Z"
+  - apiVersion: v1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:status:
+        f:conditions:
+          k:{"type":"ContainersReady"}:
+            .: {}
+            f:lastProbeTime: {}
+            f:lastTransitionTime: {}
+            f:status: {}
+            f:type: {}
+          k:{"type":"Initialized"}:
+            .: {}
+            f:lastProbeTime: {}
+            f:lastTransitionTime: {}
+            f:status: {}
+            f:type: {}
+          k:{"type":"Ready"}:
+            .: {}
+            f:lastProbeTime: {}
+            f:lastTransitionTime: {}
+            f:status: {}
+            f:type: {}
+        f:containerStatuses: {}
+        f:hostIP: {}
+        f:phase: {}
+        f:podIP: {}
+        f:podIPs:
+          .: {}
+          k:{"ip":"10.120.3.9"}:
+            .: {}
+            f:ip: {}
+        f:startTime: {}
+    manager: kubelet
+    operation: Update
+    time: "2021-09-28T10:52:11Z"
+  name: kube-state-metrics-77895f7f8b-r8lp9
+  namespace: default
+  ownerReferences:
+  - apiVersion: apps/v1
+    blockOwnerDeletion: true
+    controller: true
+    kind: ReplicaSet
+    name: kube-state-metrics-77895f7f8b
+    uid: 0d7a966e-c29c-4ece-9170-2ac16c12af18
+  resourceVersion: "5630986"
+  uid: 986fb10f-9fb3-45fa-bbf4-57dcaef5825a
+spec:
+  containers:
+  - args:
+    - --collectors=certificatesigningrequests
+    - --collectors=configmaps
+    - --collectors=cronjobs
+    - --collectors=daemonsets
+    - --collectors=deployments
+    - --collectors=endpoints
+    - --collectors=horizontalpodautoscalers
+    - --collectors=ingresses
+    - --collectors=jobs
+    - --collectors=limitranges
+    - --collectors=mutatingwebhookconfigurations
+    - --collectors=namespaces
+    - --collectors=networkpolicies
+    - --collectors=nodes
+    - --collectors=persistentvolumeclaims
+    - --collectors=persistentvolumes
+    - --collectors=poddisruptionbudgets
+    - --collectors=pods
+    - --collectors=replicasets
+    - --collectors=replicationcontrollers
+    - --collectors=resourcequotas
+    - --collectors=secrets
+    - --collectors=services
+    - --collectors=statefulsets
+    - --collectors=storageclasses
+    - --collectors=validatingwebhookconfigurations
+    - --collectors=volumeattachments
+    image: quay.io/coreos/kube-state-metrics:v1.9.7
+    imagePullPolicy: IfNotPresent
+    livenessProbe:
+      failureThreshold: 3
+      httpGet:
+        path: /healthz
+        port: 8080
+        scheme: HTTP
+      initialDelaySeconds: 5
+      periodSeconds: 10
+      successThreshold: 1
+      timeoutSeconds: 5
+    name: kube-state-metrics
+    ports:
+    - containerPort: 8080
+      protocol: TCP
+    readinessProbe:
+      failureThreshold: 3
+      httpGet:
+        path: /
+        port: 8080
+        scheme: HTTP
+      initialDelaySeconds: 5
+      periodSeconds: 10
+      successThreshold: 1
+      timeoutSeconds: 5
+    resources: {}
+    terminationMessagePath: /dev/termination-log
+    terminationMessagePolicy: File
+    volumeMounts:
+    - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+      name: kube-state-metrics-token-92txb
+      readOnly: true
+  dnsPolicy: ClusterFirst
+  enableServiceLinks: true
+  nodeName: gke-prom-cluster-default-pool-f5e05eec-88tf
+  preemptionPolicy: PreemptLowerPriority
+  priority: 0
+  restartPolicy: Always
+  schedulerName: default-scheduler
+  securityContext:
+    fsGroup: 65534
+    runAsGroup: 65534
+    runAsUser: 65534
+  serviceAccount: kube-state-metrics
+  serviceAccountName: kube-state-metrics
+  terminationGracePeriodSeconds: 30
+  tolerations:
+  - effect: NoExecute
+    key: node.kubernetes.io/not-ready
+    operator: Exists
+    tolerationSeconds: 300
+  - effect: NoExecute
+    key: node.kubernetes.io/unreachable
+    operator: Exists
+    tolerationSeconds: 300
+  volumes:
+  - name: kube-state-metrics-token-92txb
+    secret:
+      defaultMode: 420
+      secretName: kube-state-metrics-token-92txb
+status:
+  conditions:
+  - lastProbeTime: null
+    lastTransitionTime: "2021-09-28T10:51:55Z"
+    status: "True"
+    type: Initialized
+  - lastProbeTime: null
+    lastTransitionTime: "2021-09-28T10:52:11Z"
+    status: "True"
+    type: Ready
+  - lastProbeTime: null
+    lastTransitionTime: "2021-09-28T10:52:11Z"
+    status: "True"
+    type: ContainersReady
+  - lastProbeTime: null
+    lastTransitionTime: "2021-09-28T10:51:55Z"
+    status: "True"
+    type: PodScheduled
+  containerStatuses:
+  - containerID: containerd://6e8a3cabe2a4cbb383c11889b1cb8ebce8ae3040d3a6051b6e538a2777f8ba80
+    image: quay.io/coreos/kube-state-metrics:v1.9.7
+    imageID: quay.io/coreos/kube-state-metrics@sha256:2f82f0da199c60a7699c43c63a295c44e673242de0b7ee1b17c2d5a23bec34cb
+    lastState: {}
+    name: kube-state-metrics
+    ready: true
+    restartCount: 0
+    started: true
+    state:
+      running:
+        startedAt: "2021-09-28T10:52:00Z"
+  hostIP: 10.128.0.7
+  phase: Running
+  podIP: 10.120.3.9
+  podIPs:
+  - ip: 10.120.3.9
+  qosClass: BestEffort
+  startTime: "2021-09-28T10:51:55Z"
